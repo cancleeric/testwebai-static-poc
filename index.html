@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="TestWebAI：AI Agent 網頁操作自動化測試概念驗證">
+  <title>TestWebAI｜網頁自動化測試 POC</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="TestWebAI 首頁"><span aria-hidden="true">◆</span> TestWebAI</a>
+    <nav aria-label="主要導覽">
+      <a href="#demo">互動範例</a>
+      <a href="#scenarios">測試情境</a>
+      <a href="#workflow">運作方式</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">AI AGENT · WEB AUTOMATION POC</p>
+        <h1 id="hero-title">讓網頁測試資料<br><em>真的跑起來</em></h1>
+        <p class="hero-copy">以結構化測試資料驅動真實瀏覽器操作，驗證欄位、條件式流程與提交結果。</p>
+        <a class="button" href="#demo">開始互動測試 <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="terminal" aria-label="自動化執行摘要">
+        <div class="terminal-bar"><span></span><span></span><span></span><b>agent-run.log</b></div>
+        <pre><code><i>01</i> load test dataset
+<i>02</i> locate form fields
+<i>03</i> execute browser actions
+<i>04</i> assert expected result
+
+<strong>✓ 3 scenarios passed</strong></code></pre>
+      </div>
+    </section>
+
+    <section id="demo" class="demo-section" aria-labelledby="demo-title">
+      <div class="section-heading">
+        <p class="eyebrow">LIVE FORM</p>
+        <h2 id="demo-title">綜合表單測試</h2>
+        <p>這份表單保留客戶原始欄位與學生身分的條件式驗證，可由人工或自動化測試操作。</p>
+      </div>
+
+      <form id="test-form" novalidate>
+        <div class="field">
+          <label for="firstname">First Name <span>姓名 · 必填</span></label>
+          <input id="firstname" name="firstname" autocomplete="off" minlength="2" required>
+          <p class="error" id="firstname-error"></p>
+        </div>
+        <div class="field">
+          <label for="email">E-Mail <span>電子郵件 · 必填</span></label>
+          <input id="email" name="email" type="email" autocomplete="off" required>
+          <p class="error" id="email-error"></p>
+        </div>
+        <div class="field">
+          <label for="role">身分角色 <span>必填</span></label>
+          <select id="role" name="role" required>
+            <option value="">請選擇</option>
+            <option value="student">學生</option>
+            <option value="developer">工程師</option>
+            <option value="designer">設計師</option>
+          </select>
+          <p class="error" id="role-error"></p>
+        </div>
+        <div class="field conditional" id="school-field" hidden>
+          <label for="school">學校名稱 <span>學生身分必填</span></label>
+          <input id="school" name="school" autocomplete="off">
+          <p class="error" id="school-error"></p>
+        </div>
+        <fieldset class="field">
+          <legend>性別 <span>必填</span></legend>
+          <div class="choices">
+            <label><input type="radio" name="gender" value="male"> 男</label>
+            <label><input type="radio" name="gender" value="female"> 女</label>
+          </div>
+          <p class="error" id="gender-error"></p>
+        </fieldset>
+        <fieldset class="field">
+          <legend>興趣 <span>至少選 1 項</span></legend>
+          <div class="choices">
+            <label><input type="checkbox" name="interest" value="coding"> 寫程式</label>
+            <label><input type="checkbox" name="interest" value="gaming"> 打電動</label>
+            <label><input type="checkbox" name="interest" value="movies"> 看電影</label>
+          </div>
+          <p class="error" id="interest-error"></p>
+        </fieldset>
+        <button class="button submit" type="submit">提交表單 <span aria-hidden="true">→</span></button>
+        <div id="success" class="success" role="status" aria-live="polite" hidden></div>
+      </form>
+    </section>
+
+    <section id="scenarios" class="scenarios" aria-labelledby="scenario-title">
+      <div class="section-heading">
+        <p class="eyebrow">3 E2E SCENARIOS</p>
+        <h2 id="scenario-title">一份資料，一條可追蹤流程</h2>
+      </div>
+      <div class="cards">
+        <article><b>01</b><h3>學生情境</h3><p>Apple · 學生 · 台灣大學</p><span>條件式欄位驗證</span></article>
+        <article><b>02</b><h3>工程師情境</h3><p>Charles · 工程師</p><span>非學生流程驗證</span></article>
+        <article><b>03</b><h3>設計師情境</h3><p>David · 設計師</p><span>多選興趣驗證</span></article>
+      </div>
+    </section>
+
+    <section id="workflow" class="workflow" aria-labelledby="workflow-title">
+      <p class="eyebrow">HOW IT WORKS</p>
+      <h2 id="workflow-title">Input → Agent → Evidence</h2>
+      <ol>
+        <li><b>結構化輸入</b><span>從 Excel 測試案例讀取欄位與期望值</span></li>
+        <li><b>瀏覽器操作</b><span>Agent 定位元件、輸入資料、觸發互動</span></li>
+        <li><b>結果驗證</b><span>每個案例獨立斷言，留下可重現證據</span></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer><span>TestWebAI POC</span><span>Static · Accessible · Testable</span></footer>
+  <script src="assets/app.js"></script>
+</body>
+</html>
