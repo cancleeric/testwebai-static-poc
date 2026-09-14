@@ -25,6 +25,7 @@ jobs:
         with:
           python-version: '3.12'
           cache: pip
+          cache-dependency-path: requirements-selenium.txt
       - uses: browser-actions/setup-chrome@v1
       - run: python -m pip install -r requirements-selenium.txt
       - run: python -m unittest discover -s . -p 'test_*.py' -v
