@@ -10,6 +10,7 @@
 - 學生角色的條件式學校欄位
 - 3 份獨立 Playwright E2E：學生、工程師、設計師
 - 3 份獨立 Selenium E2E：學生、工程師、設計師
+- 完整 `TestWebAIScript1.xlsx`：3 個工作表分別對應學生、工程師、設計師，供客戶既有主程式逐案執行
 - 可直接部署至 GitHub Pages 或任何靜態主機
 
 ## 本機執行
@@ -40,3 +41,18 @@ python -m unittest discover -s . -p 'test_*.py' -v
 ```
 
 Selenium Manager 會自動管理相容的 ChromeDriver；如需指定 Chrome 執行檔，可設定 `CHROME_BINARY`。
+
+## 客戶 Excel 指令檔
+
+`TestWebAIScript1.xlsx` 已依 `TestWebAI輸入資料案例.xlsx` 補齊三筆案例：
+
+- `script1-student`：apple／學生／台灣大學／女／看電影
+- `script2-developer`：charles／工程師／男／寫程式
+- `script3-designer`：david／設計師／男／打電動＋看電影
+
+如需由來源檔重新產生：
+
+```bash
+python -m pip install -r requirements-xlsx.txt
+python tools/generate_testwebai_scripts.py
+```
