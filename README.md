@@ -9,6 +9,7 @@
 - 姓名、Email、角色、性別、興趣驗證
 - 學生角色的條件式學校欄位
 - 3 份獨立 Playwright E2E：學生、工程師、設計師
+- 3 份獨立 Selenium E2E：學生、工程師、設計師
 - 可直接部署至 GitHub Pages 或任何靜態主機
 
 ## 本機執行
@@ -28,3 +29,14 @@ npm run test:e2e
 ```
 
 測試資料忠實對應客戶 Excel 的三筆案例。
+
+## Selenium E2E
+
+需安裝 Python 3.10+ 與 Chrome：
+
+```bash
+python -m pip install -r requirements-selenium.txt
+python -m unittest discover -s . -p 'test_*.py' -v
+```
+
+Selenium Manager 會自動管理相容的 ChromeDriver；如需指定 Chrome 執行檔，可設定 `CHROME_BINARY`。
